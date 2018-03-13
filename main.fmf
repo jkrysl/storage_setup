@@ -1,0 +1,5 @@
+description: There are example tests for VDO on storage.
+requires_install:
+ - kmod-kvdo
+ - vdo
+vdo_name: vdo_test

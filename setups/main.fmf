@@ -1,0 +1,41 @@
+description: Tests to prepare and clean up devices for tests
+setup: True
+
+/setup_local:
+  description: Sets up local storage
+  test: setup_local.py
+  requires_cleanup: setups/cleanup_local
+  requires_install+:
+    - lshw
+
+/cleanup_local:
+  description: Cleans up local storage
+  test: cleanup_local.py
+  requires_install+:
+    - lshw
+
+/cleanup_mess:
+  description: Cleans up mess on storage
+  test: cleanup_mess.py
+
+/setup_remote:
+  description: Sets up remote storage
+  test: setup_remote.py
+  requires_cleanup: setups/cleanup_remote
+  requires_install+:
+    - iscsi-initiator-utils
+
+/cleanup_remote:
+  description: Cleans up remote storage
+  test: cleanup_remote.py
+  requires_install+:
+    - iscsi-initiator-utils
+
+/setup_vdo:
+  description: Sets up vdo on storage
+  test: setup_vdo.py
+  requires_cleanup: setups/cleanup_vdo
+
+/cleanup_vdo:
+  description: Cleans up vdo on storage
+  test: cleanup_vdo.py

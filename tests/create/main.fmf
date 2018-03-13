@@ -1,0 +1,22 @@
+description: Testing 'vdo create'
+time: 1 min
+
+/ack_threads_success:
+  description: Testing 'vdo create --vdoAckThreads', commands should succeed
+  test: ack_threads.py
+  tier: 1
+
+/ack_threads_fail:
+  description: Testing 'vdo create --vdoAckThreads', all comands including failing ones
+  test: ack_threads.py
+  tier: 2
+
+/activate_success:
+  description: Testing 'vdo create --activate', commands should succeed
+  test: activate.py
+  tier: 1
+
+/activate_fail:
+  description: Testing 'vdo create --activate', all comands including failing ones
+  test: activate.py
+  tier: 2
