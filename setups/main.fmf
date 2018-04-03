@@ -14,10 +14,6 @@ setup: True
   requires_install+:
     - lshw
 
-/cleanup_mess:
-  description: Cleans up mess on storage
-  test: cleanup_mess.py
-
 /setup_remote:
   description: Sets up remote storage
   test: setup_remote.py

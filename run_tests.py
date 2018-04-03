@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import argparse
-from tools.fmf_tools import get_tests, get_config, get_path
+from tools.fmf_tools import get_tests, get_config, get_path, MissingSetup
 
 
 def _execute_tests_fmf(path, filter=list(""), setup_env=None):
@@ -27,8 +27,7 @@ def _execute_tests_fmf(path, filter=list(""), setup_env=None):
 
         command += get_path() + "/" + test['test']
 
-        print("Running command:")
-        print("\t%s" % command)
+        print("%-33s: %s" % (test['name'], command))
     return True
 
 if __name__ == '__main__':
@@ -43,4 +42,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # args.setup = "iscsi vdo/setup/cleanup_multipath"
-    test_runs = _execute_tests_fmf(args.path, args.filter, args.setup)
+    try:
+        test_runs = _execute_tests_fmf(args.path, args.filter, args.setup)
+    except MissingSetup:
+        print("Please specify --setup argument.")
+        exit(1)

@@ -16,6 +16,10 @@ subprocess.Popen("yum install -y %s" % pack)
 """
 
 
+class MissingSetup(Exception):
+    pass
+
+
 def get_path():
     return os.getcwd()
 
@@ -68,7 +72,6 @@ def get_tests(name=None, filter=list(""), os_env_asterix=None):
 
     for i in tree.climb():
         leaf = i.get()
-        print leaf
 
         # do not run deactivated tests
         if 'active' in leaf and not leaf['active']:
@@ -170,9 +173,9 @@ def replace_require_setup(leaf, os_env=None):
     req = ""
     for requirement in require_setup:
         if "*" in requirement:
-            if os_env is None:
-                print("FAIL: Set '%s' env to specify setup type for tests." % os_env)
-                exit(1)
+            if os_env is None or os_env == "":
+                print("FAIL: Got nothing to replace '*' in requires_setup with.")
+                raise MissingSetup
             env = os_env.split()
             # replace '*' with the correct device type and adds the rest setup functions
             req = ""
