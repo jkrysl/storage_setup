@@ -31,6 +31,7 @@ setup: True
   description: Sets up vdo on storage
   test: setup_vdo.py
   requires_cleanup: setups/cleanup_vdo
+  device: /dev/loop1
 
 /cleanup_vdo:
   description: Cleans up vdo on storage

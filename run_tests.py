@@ -41,7 +41,6 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    # args.setup = "iscsi vdo/setup/cleanup_multipath"
     try:
         test_runs = _execute_tests_fmf(args.path, args.filter, args.setup)
     except MissingSetup:
