@@ -1,2 +1,2 @@
 description: Testing 'vdo' command line tool
-requires_setup: setup/setup_*.py
+requires_setup: [setups/setup_*]

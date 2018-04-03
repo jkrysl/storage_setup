@@ -1,6 +1,6 @@
 description: Testing 'vdo modify'
 time: 1 min
-requires_setup+: vdo/setup/create_vdo.py
+requires_setup+: [setups/setup_vdo]
 
 /block_map_cache_size:
   description: Testing 'vdo modify --blockMapCacheSize', commands should succeed
